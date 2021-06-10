@@ -1574,8 +1574,8 @@ enum TaskListRow: Int, CustomStringConvertible {
         let passcodeInvalidMessage = NSLocalizedString("A valid password must be 4 to 8 characters long and include at least one numeric character.", comment: "")
         let registrationOptions: ORKRegistrationStepOption = [.includeGivenName, .includeFamilyName, .includeGender, .includeDOB, .includePhoneNumber]
         let registrationStep = ORKRegistrationStep(identifier: String(describing: Identifier.registrationStep), title: registrationTitle, text: exampleDetailText, passcodeValidationRegularExpression: passcodeValidationRegularExpression, passcodeInvalidMessage: passcodeInvalidMessage, options: registrationOptions)
-        registrationStep.phoneNumberValidationRegularExpression = try? NSRegularExpression(pattern: "^[+]{1,1}[1]{1,1}\\s{1,1}[(]{1,1}[1-9]{3,3}[)]{1,1}\\s{1,1}[1-9]{3,3}\\s{1,1}[1-9]{4,4}$")
-        registrationStep.phoneNumberInvalidMessage = "Expected format +1 (555) 555 5555"
+        registrationStep.phoneNumberValidationRegularExpression = try? NSRegularExpression(pattern: "^[+]{1,1}[1]{1,1}\\s{1,1}[(][2-9]{1,1}[0-9]{2,2}[)]{1,1}\\s{1,1}[2-9]{1,1}[0-9]{2,2}\\s{1,1}[0-9]{4,4}$")
+        registrationStep.phoneNumberInvalidMessage = "Expected format +1 (555) 555 5555. First digit of either Area code or exchange cannot be 0 or 1."
         
         /*
         A wait step allows you to upload the data from the user registration onto your server before presenting the verification step.
